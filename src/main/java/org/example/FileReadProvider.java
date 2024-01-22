@@ -9,7 +9,6 @@ public class FileReadProvider {
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             return readTxtFileToString(reader);
         } catch (IOException e) {
-            // Handle IOException appropriately (e.g., log or throw)
             e.printStackTrace();
             return null;
         }
@@ -18,7 +17,6 @@ public class FileReadProvider {
     public String readTxtFileToString(BufferedReader reader) throws IOException {
         StringBuilder content = new StringBuilder();
         String line;
-
         while ((line = reader.readLine()) != null) {
             content.append(line);
             content.append(System.lineSeparator());
