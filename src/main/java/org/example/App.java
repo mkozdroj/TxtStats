@@ -17,7 +17,15 @@ public class App {
     System.out.println(content);
 
     TextStatisticService stats = new TextStatisticService();
-        System.out.println(stats.getCharacterCountWithWhiteSpace(content));
+        System.out.println("Number of chcaracters:");
+        System.out.println(stats.getCharacterCountWithoutWhiteSpace(content));
+        System.out.println("");
+        System.out.println("Number of words:");
+        System.out.println(stats.getWordsCount(content));
+        System.out.println("");
+
+
+
     // Check if content is not null
 //        if (content != null) {
 //    System.out.println("File content:");

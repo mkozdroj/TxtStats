@@ -3,15 +3,20 @@ package org.example;
 public class TextStatisticService implements TextStatisticRepository{
 
     @Override
-    public int getCharacterCountWithWhiteSpace(String text) {
+    public int getCharacterCountWithoutWhiteSpace(String text) {
         int counter = text.replaceAll("[\n\r]+", "").length();
         return counter;
     }
 
     @Override
-    public int getWordsCount() {
-        return 0;
+    public int getWordsCount(String text) {
+        if(text.isBlank()){
+            return 0;
+        }
+        int counter = text.split("\\s\n").length;
+        return counter;
     }
+
 
     @Override
     public int getNumberOfSentences() {

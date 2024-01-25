@@ -2,8 +2,8 @@ package org.example;
 
 public interface TextStatisticRepository {
 
-    int getCharacterCountWithWhiteSpace(String text);
-    int getWordsCount();
+    int getCharacterCountWithoutWhiteSpace(String text);
+    int getWordsCount(String text);
     int getNumberOfSentences();
     double getAverageWordsPerSentence();
     int getAverageNumberOfCharacterPerWords();
