@@ -1,6 +1,9 @@
 package org.example;
 
-public class TextStatisticService implements TextStatisticRepository{
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class TextStatisticService implements TextStatisticRepository {
 
     @Override
     public int getCharacterCountWithoutWhiteSpace(String text) {
@@ -10,7 +13,7 @@ public class TextStatisticService implements TextStatisticRepository{
 
     @Override
     public int getWordsCount(String text) {
-        if(text.isBlank()){
+        if (text.isBlank()) {
             return 0;
         }
         int counter = text.split("\\s\n").length;
@@ -19,8 +22,15 @@ public class TextStatisticService implements TextStatisticRepository{
 
 
     @Override
-    public int getNumberOfSentences() {
-        return 0;
+    public int getNumberOfSentences(String text) {
+        String pattern = "([.!?])([\\s\\n])([A-Z]*)";
+        Pattern r = Pattern.compile(pattern);
+        Matcher m = r.matcher(text);
+        int counter = 0;
+        while (m.find()) {
+            counter++;
+        }
+        return counter;
     }
 
     @Override
@@ -34,13 +44,21 @@ public class TextStatisticService implements TextStatisticRepository{
     }
 
     @Override
-    public int getNumberOfLine() {
-        return 0;
+    public int getNumberOfLine(String text) {
+        int counter = text.split("\r\n|\r|\n").length;
+        return counter;
     }
 
     @Override
-    public int getTheLongestWord() {
-        return 0;
+    public String getTheLongestWord(String text) {
+        String[] words = text.split("\\s\n");
+        String theLongestWord = " ";
+        for(int i = 0; i < words.length; i++){
+            if(words[i].length() >= theLongestWord.length()){
+                theLongestWord = words[i];
+            }
+        }
+        return theLongestWord;
     }
 
     @Override

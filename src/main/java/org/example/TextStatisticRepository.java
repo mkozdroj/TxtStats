@@ -4,11 +4,11 @@ public interface TextStatisticRepository {
 
     int getCharacterCountWithoutWhiteSpace(String text);
     int getWordsCount(String text);
-    int getNumberOfSentences();
+    int getNumberOfSentences(String text);
     double getAverageWordsPerSentence();
     int getAverageNumberOfCharacterPerWords();
-    int getNumberOfLine();
-    int getTheLongestWord();
+    int getNumberOfLine(String text);
+    String getTheLongestWord(String text);
     double getAverageWordLength();
     int getTheLongestSentence();
 }
