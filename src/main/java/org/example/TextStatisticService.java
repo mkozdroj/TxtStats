@@ -48,7 +48,7 @@ public class TextStatisticService implements TextStatisticRepository {
         int counter = text.split("\r\n|\r|\n").length;
         return counter;
     }
-
+//TODO
     @Override
     public String getTheLongestWord(String text) {
         String[] words = text.split("\\s\n");
