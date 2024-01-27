@@ -7,7 +7,7 @@ public class TextStatisticService implements TextStatisticRepository {
 
     @Override
     public int getCharacterCountWithoutWhiteSpace(String text) {
-        int counter = text.replaceAll("[\n\r]+", "").length();
+        int counter = text.replaceAll("[\\s\r]+", "").length();
         return counter;
     }
 
@@ -16,7 +16,9 @@ public class TextStatisticService implements TextStatisticRepository {
         if (text.isBlank()) {
             return 0;
         }
-        int counter = text.split("\\s\n").length;
+        // int counter = text.split("\\s\n").length;
+        int counter = text.split("\\w+(-\\w+)*").length - 1;
+        //  int counter = text.split("(?!.\\.)\\W").length;
         return counter;
     }
 
@@ -24,6 +26,7 @@ public class TextStatisticService implements TextStatisticRepository {
     @Override
     public int getNumberOfSentences(String text) {
         String pattern = "([.!?])([\\s\\n])([A-Z]*)";
+
         Pattern r = Pattern.compile(pattern);
         Matcher m = r.matcher(text);
         int counter = 0;
@@ -34,8 +37,9 @@ public class TextStatisticService implements TextStatisticRepository {
     }
 
     @Override
-    public double getAverageWordsPerSentence() {
-        return 0;
+    public double getAverageWordsPerSentence(String text) {
+        double averageWordPerSentence = (double) getWordsCount(text) / getNumberOfSentences(text);
+        return averageWordPerSentence;
     }
 
     @Override
@@ -48,13 +52,13 @@ public class TextStatisticService implements TextStatisticRepository {
         int counter = text.split("\r\n|\r|\n").length;
         return counter;
     }
-//TODO
+
     @Override
     public String getTheLongestWord(String text) {
-        String[] words = text.split("\\s\n");
+        String[] words = text.split("[!._,'@?\\s\n]");
         String theLongestWord = " ";
-        for(int i = 0; i < words.length; i++){
-            if(words[i].length() >= theLongestWord.length()){
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].length() >= theLongestWord.length()) {
                 theLongestWord = words[i];
             }
         }
@@ -62,8 +66,9 @@ public class TextStatisticService implements TextStatisticRepository {
     }
 
     @Override
-    public double getAverageWordLength() {
-        return 0;
+    public double getAverageWordLength(String text) {
+        double averageWordLength = (double) getCharacterCountWithoutWhiteSpace(text) / getWordsCount(text);
+        return averageWordLength;
     }
 
     @Override

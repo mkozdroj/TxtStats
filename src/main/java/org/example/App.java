@@ -37,6 +37,16 @@ public class App {
         System.out.println(stats.getTheLongestWord(content));
         System.out.println("");
 
+        System.out.println("The average number of characer per word");
+        System.out.println(stats.getAverageWordLength(content));
+        System.out.println("");
+
+        System.out.println("The average number of words per sentence");
+        System.out.println(stats.getAverageWordsPerSentence(content));
+        System.out.println("");
+
+      ;
+
 
 
         // Check if content is not null
