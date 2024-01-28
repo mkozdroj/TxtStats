@@ -2,13 +2,14 @@ package org.example;
 
 public interface TextStatisticRepository {
 
-    int getCharacterCountWithoutWhiteSpace(String text);
+    int getCharacterCountWithoutSpace(String text);
     int getWordsCount(String text);
     int getNumberOfSentences(String text);
     double getAverageWordsPerSentence(String text);
-    int getAverageNumberOfCharacterPerWords();
+    double getAverageNumberCharactersPerWord(String text);
     int getNumberOfLine(String text);
     String getTheLongestWord(String text);
     double getAverageWordLength(String text);
-    int getTheLongestSentence();
+    int getCharactersCountWithoutSpaceAndPunctuation(String text);
+    String getTheLongestSentence(String text);
 }
