@@ -4,6 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TextStatisticService implements TextStatisticRepository {
+    public TextStatisticService() {
+    }
+
 
     @Override
     public int getCharacterCountWithoutSpace(String text) {
@@ -27,9 +30,10 @@ public class TextStatisticService implements TextStatisticRepository {
     //TODO - removing new line in the last element of array
     @Override
     public int getNumberOfSentences(String text) {
-        String[] sentences = text.split("([.!?])([\\s\\n])([A-Z]*)");
+       text = text.replaceAll("[\\n]+", "");;
+        String[] sentences = text.split("([.!?])([\\n\\s])([A-Z]*)");
         for (String sentence : sentences) {
-            sentence = sentence.trim();
+            sentence = sentence.replaceAll("[\\s\\n]+", "");
         }
         int counter = sentences.length;
 

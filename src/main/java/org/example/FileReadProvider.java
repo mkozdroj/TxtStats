@@ -5,6 +5,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class FileReadProvider {
+
+    public FileReadProvider() {
+    }
+
     public String readByBuffer(String path) {
         try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
             return readTxtFileToString(reader);
