@@ -1,4 +1,6 @@
-package org.example;
+package org.example.providers;
+
+import org.example.services.TextStatisticService;
 
 import java.io.FileWriter;
 import java.io.BufferedWriter;

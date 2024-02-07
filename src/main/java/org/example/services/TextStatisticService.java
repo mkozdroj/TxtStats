@@ -1,7 +1,6 @@
-package org.example;
+package org.example.services;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import org.example.repositories.TextStatisticRepository;
 
 public class TextStatisticService implements TextStatisticRepository {
     public TextStatisticService() {
@@ -32,9 +31,9 @@ public class TextStatisticService implements TextStatisticRepository {
     public int getNumberOfSentences(String text) {
        text = text.replaceAll("[\\n]+", "");;
         String[] sentences = text.split("([.!?])([\\n\\s])([A-Z]*)");
-        for (String sentence : sentences) {
-            sentence = sentence.replaceAll("[\\s\\n]+", "");
-        }
+//        for (String sentence : sentences) {
+//            sentence = sentence.replaceAll("[\\s\\n]+", "");
+//        }
         int counter = sentences.length;
 
 //        String pattern = "([.!?])([\\s\\n])([A-Z]*)";

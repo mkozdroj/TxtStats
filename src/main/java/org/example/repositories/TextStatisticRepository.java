@@ -1,4 +1,4 @@
-package org.example;
+package org.example.repositories;
 
 public interface TextStatisticRepository {
 

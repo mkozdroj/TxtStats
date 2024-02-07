@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.providers.FileReadProvider;
+import org.example.services.TextStatisticService;
+
 /**
  * Hello world!
  */
